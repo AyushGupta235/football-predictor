@@ -166,7 +166,7 @@ def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1,
     last_value["opp_code"] = team_codes[team2]
     last_value["gf_rolling"] = goalsf1/10
     last_value["ga_rolling"] = goalsa1/10
-    x = last_value.reshape(1, -1)
+    x = last_value.values.reshape(1, -1)
 
     return x, labels_dict
 
