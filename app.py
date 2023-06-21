@@ -8,7 +8,7 @@ def set_bg_hack_url():
         f"""
          <style>
          .stApp {{
-             background: url("https://wallpapers.com/images/hd/premier-league-background-7z3kdnrkhfnote46.jpg");
+             background: url("https://wallpaperaccess.com/full/1660311.jpg");
              background-size: cover
          }}
          </style>
@@ -55,5 +55,4 @@ if st.button("Predict Probability"):
     st.session_state.pred, st.session_state.prob = model_run(X, labels)
 
     st.header("Predicted result: " + st.session_state.pred[0])
-    if st.button("Show all probabilities"):
-        st.write(st.session_state.prob)
+    st.write(st.session_state.prob)
