@@ -108,7 +108,7 @@ def rolling_averages(group, cols, new_cols):
     group = group.dropna(subset=new_cols)
     return group
 
-def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1, goalsa2):
+def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1, goalsa2, ha):
     # Fixing names
     matches["opponent"] = matches["opponent"].replace(name_diff)
     
@@ -129,7 +129,7 @@ def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1,
 
     matches.drop(columns = ["hours", "mins"], axis = 1, inplace=True)
 
-    matches["venue_code"] = matches["venue"].astype("category").cat.codes # Home and away
+    matches["venue_code"] = ha # Home and away
     matches["team_code"] = matches["team"].map(team_codes)
     matches["opp_code"] = matches["opponent"].map(team_codes) # Converting opponents into categorical codes
     matches["form_code"] = matches["formation"].astype('category').cat.codes

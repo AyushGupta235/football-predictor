@@ -27,7 +27,11 @@ with col1:
 with col2:
     team2 = st.selectbox("Select the opposing team", sorted(teams))
 
-target_score = st.selectbox("Is your team at home or away?", ["Home","Away"])
+home_or_away = st.selectbox("Is your team at home or away?", ["Home","Away"])
+if home_or_away == "Home":
+    ha = 1
+else:
+    ha = 0
 
 with col1:
     goalsf1 = st.number_input("Enter the goals scored by your team in the last 10 games", min_value=0, value=0)
@@ -51,7 +55,7 @@ if st.button("Predict Probability"):
 
     df = pd.read_csv('matches_5yr.csv')
 
-    X,labels = prepare_data(df, team1=team1, team2=team2, goalsf1=goalsf1, goalsa1=goalsa1, goalsf2=goalsa2, goalsa2=goalsa2)
+    X,labels = prepare_data(df, team1=team1, team2=team2, goalsf1=goalsf1, goalsa1=goalsa1, goalsf2=goalsa2, goalsa2=goalsa2, ha = ha)
     st.session_state.pred, st.session_state.prob = model_run(X, labels)
 
     st.header("Predicted result: " + st.session_state.pred[0])
