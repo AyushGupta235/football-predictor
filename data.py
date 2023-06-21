@@ -166,8 +166,8 @@ def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1,
 
     last_value = x[predictors].loc[x['team'] == team1].iloc[-1]
     last_value["opp_code"] = team_codes[team2]
-    last_value["gf_rolling"] = goalsf1/10
-    last_value["ga_rolling"] = goalsa1/10
+    last_value["gf_rolling"] = (goalsf1/10 + goalsa2/10) / 2
+    last_value["ga_rolling"] = (goalsa1/10 + goalsf2/10) / 2
     x = last_value.values.reshape(1, -1)
 
     return x, labels_dict
