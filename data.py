@@ -183,9 +183,9 @@ def model_run(x, labels):
     proba = model.predict_proba(x)
 
     probabilities = {
-        labels[0]:proba[0][0],
-        labels[1]:proba[0][1],
-        labels[2]:proba[0][2]
+        labels[0]:str(round(proba[0][0],2)*100) + "%",
+        labels[1]:str(round(proba[0][1],2)*100) + "%",
+        labels[2]:str(round(proba[0][2],2)*100) + "%"
     }
 
     return prediction, probabilities
