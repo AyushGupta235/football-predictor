@@ -160,7 +160,7 @@ def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1,
     predictors = predictors + new_cols
 
     matches_rolling = matches.groupby("team").apply(lambda x: rolling_averages(x, cols, new_cols))
-    matches_rolling = matches_rolling.droplevel('team')
+    x = matches_rolling.droplevel('team')
 
     last_value = x[predictors].loc[x['team'] == team1].iloc[-1]
     last_value["opp_code"] = team_codes[team2]
