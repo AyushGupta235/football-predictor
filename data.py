@@ -120,7 +120,7 @@ def prepare_data(matches: pd.DataFrame, team1, team2, goalsf1, goalsf2, goalsa1,
 
     # Data cleaning and preprocessing
     matches["date"] = pd.to_datetime(matches["date"])
-    matches["hours"], matches["mins"] = matches["time"].str.split(':').str
+    matches[["hours", "mins"]] = matches["time"].str.split(':', n=1, expand=True)
     matches["hours"] = matches["hours"].astype(int)
     matches["mins"] = matches["mins"].astype(int)
     matches["time"] = matches["hours"] + (matches["mins"] / 60)
