@@ -8,7 +8,7 @@ def set_bg_hack_url():
         f"""
          <style>
          .stApp {{
-             background: url("https://wallpapercave.com/wp/wp6592753.jpg");
+             background: url("https://wallpapers.com/images/hd/premier-league-background-7z3kdnrkhfnote46.jpg");
              background-size: cover
          }}
          </style>
