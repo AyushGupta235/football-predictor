@@ -106,7 +106,7 @@ def rolling_averages(group, cols, new_cols):
     group = group.dropna(subset=new_cols)
     return group
 
-def prepare_data(matches: pd.Dataframe, team1, team2, goalsf1, goalsf2, goalsa1, goalsa2)-> np.ndarray:
+def prepare_data(matches: pd.Dataframe, team1, team2, goalsf1, goalsf2, goalsa1, goalsa2):
     # Fixing names
     matches["opponent"] = matches["opponent"].replace(name_diff)
     
