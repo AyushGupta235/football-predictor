@@ -16,6 +16,8 @@ def set_bg_hack_url():
         unsafe_allow_html=True
     )
 
+set_bg_hack_url()
+
 st.title("Premier League")
 
 col1, col2 = st.columns(2)
@@ -50,8 +52,8 @@ if st.button("Predict Probability"):
     df = pd.read_csv('matches_5yr.csv')
 
     X,labels = prepare_data(df, team1=team1, team2=team2, goalsf1=goalsf1, goalsa1=goalsa1, goalsf2=goalsa2, goalsa2=goalsa2)
-    pred, prob = model_run(X, labels)
+    st.session_state.pred, st.session_state.prob = model_run(X, labels)
 
-    st.header("Predicted result: " + pred[0])
+    st.header("Predicted result: " + st.session_state.pred[0])
     if st.button("Show all probabilities"):
-        st.write(prob)
+        st.write(st.session_state.prob)
